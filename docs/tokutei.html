@@ -7,8 +7,28 @@
   <meta name="description" content="Chrome拡張機能「ChatGPT Generation Notifier」の特定商取引法に基づく表記ページです。" />
   <style>
     :root { color-scheme: light dark; }
+    :root{
+      --bg: #fff;
+      --fg: #111;
+      --muted: rgba(0,0,0,.65);
+      --border: rgba(127,127,127,.35);
+      --panel: rgba(127,127,127,.06);
+      --link: inherit;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0b0c;
+        --fg: #f2f2f2;
+        --muted: rgba(255,255,255,.70);
+        --border: rgba(200,200,200,.28);
+        --panel: rgba(255,255,255,.06);
+        --link: inherit;
+      }
+    }
     body {
       margin: 0;
+      background: var(--bg);
+      color: var(--fg);
       font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN",
                    "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
       line-height: 1.65;
@@ -16,83 +36,198 @@
     .wrap { max-width: 920px; margin: 0 auto; padding: 28px 18px 64px; }
     header { margin-bottom: 18px; }
     h1 { font-size: 1.6rem; margin: 0 0 6px; }
-    .meta { opacity: .8; font-size: .95rem; }
+    .meta { opacity: .85; font-size: .95rem; color: var(--muted); }
     h2 { margin-top: 26px; font-size: 1.2rem; }
+    p { margin: 10px 0; }
     dl { margin: 0; }
     dt { font-weight: 700; margin-top: 14px; }
-    dd { margin: 6px 0 0; color: rgba(0,0,0,.6); }
+    dd { margin: 6px 0 0; color: var(--muted); }
     .box {
-      border: 1px solid rgba(127,127,127,.35);
+      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 14px 14px;
       margin: 12px 0;
-      background: rgba(127,127,127,.06);
+      background: var(--panel);
     }
-    .small { font-size: 12px; color: rgba(0,0,0,.6); }
-    a { color: inherit; }
-    footer { margin-top: 40px; opacity: .8; font-size: .95rem; }
+    .small { font-size: 12px; color: var(--muted); }
+    a { color: var(--link); }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: .98rem;
+    }
+    .table th, .table td {
+      border: 1px solid var(--border);
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+    .table th { text-align: left; background: var(--panel); }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+    footer { margin-top: 40px; opacity: .85; font-size: .95rem; color: var(--muted); }
+    .hr { height: 1px; background: var(--border); margin: 18px 0; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
   </style>
 </head>
 <body>
   <main class="wrap">
     <header>
       <h1>特定商取引法に基づく表記</h1>
-      <div class="meta">対象：Chrome拡張機能「ChatGPT Generation Notifier」<br />最終更新日：2026-02-07</div>
+      <div class="meta">
+        対象：Chrome拡張機能「ChatGPT Generation Notifier」<br />
+        最終更新日：2026-02-09
+      </div>
     </header>
+
+    <!-- Stripeの審査で重要になりやすい「何を売っているか」「料金」「解約方法」「連絡手段」を明確化 -->
+    <section class="box">
+      <h2 style="margin-top:0;">販売する商品・サービス</h2>
+      <p>
+        「ChatGPT Generation Notifier」は、ChatGPT（<code>chatgpt.com</code> 等）上で生成が完了したことを検知し、
+        通知音等でユーザーに知らせるための Chrome 拡張機能です。
+      </p>
+      <p class="small">
+        ※本サービスは OpenAI およびその関連会社とは提携していません。<br />
+        ※拡張機能はデジタルコンテンツ（ソフトウェア）として提供されます。
+      </p>
+    </section>
 
     <section>
       <div class="box">
+        <h2 style="margin-top:0;">事業者情報</h2>
         <dl>
-          <dt>販売事業者名</dt>
+          <dt>販売事業者名（屋号）</dt>
           <dd>エイドハイド</dd>
 
           <dt>運営責任者</dt>
           <dd>向田 偉紀</dd>
 
           <dt>所在地</dt>
-          <dd>東京都港区<br>
-            <span class="small">※請求があった場合、遅滞なく開示します</span>
+          <dd>
+            <!-- TODO: Stripe審査ではフル住所の方が通りやすいので、可能なら番地まで記載してください -->
+            東京都港区（以降の住所は請求があった場合、遅滞なく開示します）
+            <br><span class="small">※開示請求は下記メールアドレスへご連絡ください。</span>
           </dd>
 
           <dt>電話番号</dt>
-          <dd>【請求があった場合、遅滞なく開示します】</dd>
-
-          <dt>メールアドレス</dt>
-          <dd><a href="mailto:takeki.mukaida@gmail.com">takeki.mukaida@gmail.com</a></dd>
-
-          <dt>販売価格</dt>
-          <dd>各サービスページに記載の金額（消費税込）</dd>
-
-          <dt>商品代金以外の必要料金</dt>
-          <dd>インターネット接続料金、通信費等はお客様のご負担となります</dd>
-
-          <dt>支払方法</dt>
-          <dd>クレジットカード決済（Stripe）</dd>
-
-          <dt>支払時期</dt>
           <dd>
-            クレジットカード決済時に直ちに処理されます。<br>
-            サブスクリプションの場合は各更新日に課金されます。
+            <!-- TODO: Stripe審査では電話番号の明記が有利です。可能なら記載してください -->
+            （請求があった場合、遅滞なく開示します）
           </dd>
 
-          <dt>商品の引渡時期</dt>
-          <dd>決済完了後、直ちに利用可能</dd>
-
-          <dt>返品・キャンセルについて</dt>
+          <dt>お問い合わせ窓口</dt>
           <dd>
-            デジタル商品の性質上、原則として返品・返金には応じておりません。<br>
-            ただし、当社の責に帰すべき事由がある場合はこの限りではありません。
+            メール：<a href="mailto:takeki.mukaida@gmail.com">takeki.mukaida@gmail.com</a><br />
+            
           </dd>
 
-          <dt>動作環境</dt>
-          <dd>各サービスページに記載</dd>
         </dl>
       </div>
     </section>
 
     <section>
-      <p class="small">最終更新日：2026-02-07</p>
-      <p class="small"><a href="index.html">ホームへ</a> ・ <a href="privacy.html">プライバシーポリシーへ</a></p>
+      <div class="box">
+        <h2 style="margin-top:0;">販売価格</h2>
+
+        <table class="table" aria-label="料金表">
+          <thead>
+            <tr>
+              <th>プラン</th>
+              <th>価格</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>無料プラン</td>
+              <td>0 円</td>
+              <td>基本的な通知音</td>
+            </tr>
+            <tr>
+              <td>買い切りライセンス（Pro）</td>
+              <td>
+                <!-- TODO: 実金額に置換 -->
+                100 円
+              </td>
+              <td>任意の文章での通知音声</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="box">
+        <h2 style="margin-top:0;">商品代金以外の必要料金</h2>
+        <p class="small">インターネット接続料金、通信費等はお客様のご負担となります。</p>
+
+        <div class="hr"></div>
+
+        <dl>
+          <dt>支払方法</dt>
+          <dd>クレジットカード決済（Stripe）</dd>
+
+          <dt>支払時期</dt>
+          <dd>
+            クレジットカード決済時に直ちに処理されます。<br />
+            サブスクリプションの場合は各更新日に課金されます。
+          </dd>
+
+          <dt>商品の引渡時期（提供時期）</dt>
+          <dd>決済完了後、直ちに利用可能です。</dd>
+
+          <dt>提供方法</dt>
+          <dd>
+            Chrome 拡張機能として提供します。購入後、所定の方法で有料機能（ライセンス等）を有効化してご利用いただきます。
+          </dd>
+
+          <dt>動作環境</dt>
+          <dd>
+            Google Chrome<br />
+            Windows / macOS / Linux（Chrome が動作する環境）
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    <section>
+      <div class="box">
+        <h2 style="margin-top:0;">解約・キャンセル・返金</h2>
+        <dl>
+          <dt>返品・キャンセル（返金）について</dt>
+          <dd>
+            デジタル商品の性質上、原則として返品・返金には応じておりません。<br />
+            ただし、当社の責に帰すべき事由（例：決済完了後も有料機能が長時間利用できない等）がある場合は、
+            状況を確認のうえ、返金または同等の代替対応を行うことがあります。<br />
+            返金可否の判断および手続きは、メールにてご案内します。
+          </dd>
+
+          <dt>不具合・お問い合わせ</dt>
+          <dd>
+            不具合の内容（発生日時、環境、再現手順、スクリーンショット等）を添えてご連絡ください。<br />
+            メール：<a href="mailto:takeki.mukaida@gmail.com">takeki.mukaida@gmail.com</a>
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    <section>
+      <p class="small">最終更新日：2026-02-09</p>
+      <p class="small">
+        <a href="index.html">ホームへ</a> ・
+        <a href="privacy.html">プライバシーポリシーへ</a>
+        <!-- 料金ページを作るならリンクを有効化 -->
+        <!-- ・ <a href="pricing.html">料金ページへ</a> -->
+      </p>
     </section>
 
     <footer>
