@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>価格 | ChatGPT Generation Notifier</title>
+  <meta name="description" content="ChatGPT Generation Notifier の価格ページ。プランと請求タイミングを明記しています。" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin:0;font-family: system-ui,-apple-system,Segoe UI,Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.65 }
+    .wrap{max-width:920px;margin:0 auto;padding:28px 18px 64px}
+    h1{font-size:1.6rem;margin:0 0 6px}
+    .meta{opacity:.85;margin-bottom:18px}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border:1px solid rgba(127,127,127,.3);padding:10px;text-align:left}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid rgba(127,127,127,.35);text-decoration:none;margin-top:8px}
+    footer{margin-top:40px;opacity:.85;font-size:.95rem}
+    a{color:inherit}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>価格</h1>
+      <div class="meta">最終更新日：2026-02-09</div>
+    </header>
+
+    <section>
+      <table class="table" aria-label="料金表">
+        <thead>
+          <tr><th>プラン</th><th>価格</th><th>内容</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>無料プラン</td>
+            <td>0 円</td>
+            <td>基本的な通知音</td>
+          </tr>
+          <tr>
+            <td>Pro（買い切り / オプション）</td>
+            <td>100 円</td>
+            <td>任意の文章での音声通知などの追加機能</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:12px;">※表示価格は税込表示です。追加手数料はありません。</p>
+      <p>請求タイミング：決済時に即時課金されます。サブスクリプションは各更新日に自動課金されます。</p>
+
+      <a class="btn" href="#STRIPE_CHECKOUT_URL">購入する（Stripe）</a>
+      <a class="btn" href="refund.html">解約・返金について</a>
+    </section>
+
+    <footer>
+      <p>
+        <strong>事業者：</strong>エイドハイド ・ <strong>運営責任者：</strong>向田 偉紀<br />
+        <a href="tokutei.html">特商法</a> ・ <a href="terms.html">利用規約</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="refund.html">返金・解約</a> ・ <a href="contact.html">お問い合わせ</a> ・ <a href="pricing.html">価格</a>
+      </p>
+      <p>© <span id="y"></span> ChatGPT Generation Notifier</p>
+    </footer>
+  </main>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
